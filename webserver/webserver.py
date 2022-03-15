@@ -10,7 +10,7 @@ os.chdir(location)
 
 
 def start_server():
-    PORT = 8080
+    PORT = 8081
     handler = http.server.SimpleHTTPRequestHandler
 
     with socketserver.TCPServer(("", PORT), handler) as httpd:
