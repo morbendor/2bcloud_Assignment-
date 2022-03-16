@@ -44,7 +44,7 @@ pipeline {
       timeout(time: 60, unit: 'MINUTES')
           }
             steps {
-                sshPublisher(publishers: [sshPublisherDesc(configName: 'morbd_machine', transfers: [sshTransfer(cleanRemote: false, excludes: "", execCommand: "kube_ip=$(minikube service mor-assigmnet-svc --url)", flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
+                sshPublisher(publishers: [sshPublisherDesc(configName: 'morbd_machine', transfers: [sshTransfer(cleanRemote: false, excludes: "", execCommand: '''kube_ip=$(minikube service mor-assigmnet-svc --url)''', flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
                 
             }
         }
