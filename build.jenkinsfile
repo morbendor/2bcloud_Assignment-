@@ -37,20 +37,11 @@ pipeline {
         }
       }
     }
+
+
     stage('Test App') {
       steps {
-        sh '''
-            kube_ip=$(minikube service mor-assigmnet-svc --url)
-            if [ -z "$kube_ip" ]
-            then
-                echo "\$kube_ip is empty"
-	             exit 1
-            else
-                echo "\$kube_ip is NOT empty"
-	              curl $kube_ip
-	              #exit 0
-            fi
-        '''
+          sshPublisher(publishers: [sshPublisherDesc(configName: 'morbd_machine', transfers: [sshTransfer(cleanRemote: false, excludes: "", execCommand: "kube_ip=$(minikube service mor-assigmnet-svc --url)", flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
         }
       }
 
