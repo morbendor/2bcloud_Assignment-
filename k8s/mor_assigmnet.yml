@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: python-hw
-        image: morbendor/2bcloud_assignment:1.0
+        image: morbendor/2bcloud_assignment:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8081
